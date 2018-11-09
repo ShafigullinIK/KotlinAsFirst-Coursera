@@ -1,4 +1,5 @@
 @file:Suppress("UNUSED_PARAMETER")
+
 package lesson2.task1
 
 import lesson1.task1.discriminant
@@ -56,13 +57,33 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
     return -sqrt(y3)           // 7
 }
 
+fun main(args: Array<String>) {
+    println(ageDescription(199))
+}
+
 /**
  * Простая
  *
  * Мой возраст. Для заданного 0 < n < 200, рассматриваемого как возраст человека,
  * вернуть строку вида: «21 год», «32 года», «12 лет».
  */
-fun ageDescription(age: Int): String = TODO()
+fun ageDescription(age: Int): String {
+    if (age % 100 in 10..20) {
+        return "$age лет"
+    }
+    if (age % 10 == 1) {
+        return "$age год"
+    }
+    if (age % 10 in 2..4) {
+        return "$age года"
+    }
+    if (age % 10 in 5..9) {
+        return "$age лет"
+    }
+    return "ошибка"
+
+
+}
 
 /**
  * Простая
@@ -120,4 +141,18 @@ fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
  * Найти длину пересечения отрезков AB и CD.
  * Если пересечения нет, вернуть -1.
  */
-fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int = TODO()
+fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int {
+    if (a !in c..d && b !in c..d && c !in a..b && d !in a..b) return -1;
+    if (a in c..d) {
+        if (b in c..d) {
+            return b - a
+        } else return d - a
+    }
+    if (b in c..d) {
+        return b - c;
+    }
+    if (c in a..b) {
+        return d - c;
+    }
+    return 100500500
+}
